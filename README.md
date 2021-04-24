@@ -51,3 +51,44 @@ RPC Wine is **not** able to run by design:
 
 * Games which don't use the native `discord-rpc.dll` library but their own or a third-party wrapper.
 * Games with statically linked `discord-rpc.dll`
+
+
+Press J to jump to the feed. Press question mark to learn the rest of the keyboard shortcuts
+Log In
+Sign Up
+1
+Enabling Discord RPC
+guide
+1
+Posted byu/momitsreddit
+29 days ago
+Enabling Discord RPC
+guide
+Enabling Discord RPC for games under Wine/Proton
+
+Since Wine doesn't offer a "native" interface for games running under it to connect to the Discord Rich Presence listener on Linux, here's a short guide on how to make RPC work.
+
+I used this method on Manjaro 20.2.1 'Nibia,' though it should work the same on all other distros too.
+Requirements
+
+    [x] An internet connection
+
+    [x] Wine/Proton already set up with winetricks/protontricks installed
+
+    [x] This tarball by Marc3842h
+
+    [x] A Terminal
+
+How-to
+
+    Download the tarball and extract it to a folder. You can extract it anywhere, but I'll be using /opt/discord-rpc
+
+    Make sure you have the bin64 and the bin32 folders in /opt/discord-rpc
+
+    Open a terminal and append the locations of the bin64 and bin32 folders to the WINEDLLPATH environment variable using the following command export WINEDLLPATH=$WINEDLLPATH:/opt/discord-rpc/bin64:/opt/discord-rpc/bin32
+
+    Run winetricks/protontricks, select your wine prefix (default prefix if using protontricks), and run winecfg
+
+    Head to the libraries tab, and add a new override for library by typing in discord-rpc and clicking add. Hit Apply, and then OK
+
+    Run your game the way you usually would, and RPC should be working now
